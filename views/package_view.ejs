@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Package Details | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/data-tables.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Package details</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/package">Package</a></li>
+                                <li class="breadcrumb-item active">Package details</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <!-- Page Length Options -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <h6 class="mb-1 mt-2">English:</h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Title</th>
+                                                            <td><%= package.en.title %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Description</th>
+                                                            <td><%= package.en.description %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="mb-1 mt-2">French:</h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Title</th>
+                                                            <td><%= package.fr.title %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Description</th>
+                                                            <td><%= package.fr.description %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="mb-1 mt-2"></h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Price</th>
+                                                            <td><%= package.price %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Term</th>
+                                                            <td><%= package.term %> months</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Annual return</th>
+                                                            <td><%= package.annualReturn %>%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Monthly return</th>
+                                                            <td><%= package.monthlyReturn %>%</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Daily return</th>
+                                                            <td><%= package.dailyReturn %>%</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <a href="/admin/package" class="btn btn-danger mt-2" style="margin-left: 15px;">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h4 class="card-title">Investors</h4>
+                                        <div class="row overflow">
+                                            <div class="col s12">
+                                                <table id="page-length-option" class="display">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sr</th>
+                                                            <th>User email</th>
+                                                            <th>UserId</th>
+                                                            <th>Project</th>
+                                                            <th>Date invested</th>
+                                                            <th>Term end date</th>
+                                                            <th>Return</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% for( let i=0; i < orders.length; i++ ) { %>
+                                                        <tr>
+                                                            <td><%= i+1 %></td>
+                                                            <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><%= orders[i].user.email %></td>
+                                                            <td><%= orders[i].user.userId %></td>
+                                                            <td><%= orders[i].project.en.title %></td>
+                                                            <td><%= orders[i].orderDate.toLocaleDateString('en-GB') %></td>
+                                                            <td><%= orders[i].endDate.toLocaleDateString('en-GB') %></td>
+                                                            <td><%= orders[i].returnAmount %></td>
+                                                            <td style="max-width: 108px;"><a href="/admin/order/<%= orders[i].id %>"><i class="material-icons">remove_red_eye</i></a></td>
+                                                        </tr>
+                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <script src="/app-assets/js/scripts/data-tables.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

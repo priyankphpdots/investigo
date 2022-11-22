@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Key Risks | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <!-- Search for small screen-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Key Risks</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item active">Key Risks</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <%# errors %>
+                                                <%- messages('messages', locals) %>
+                                                <form method="POST" onsubmit="validate()" action="/admin/cms/key_risks" id="form">
+                                                    <h4 class="card-title">English</h4>
+                                                    <div class="input-field">
+                                                        <textarea class="materialize-textarea" placeholder="Description" id="enDesc" name="enDesc" type="text"><%= page.en.content %></textarea>
+                                                        <small>
+                                                            <div id="enDescErr" class="error"></div>
+                                                        </small>
+                                                        <label for="enDesc">Description</label>
+                                                    </div>
+                                                    <h4 class="card-title mt-2">French</h4>
+                                                    <div class="input-field">
+                                                        <textarea class="materialize-textarea" placeholder="Description" id="frDesc" name="frDesc" type="text"><%= page.fr.content %></textarea>
+                                                        <small>
+                                                            <div id="frDescErr" class="error"></div>
+                                                        </small>
+                                                        <label for="frDesc">Description</label>
+                                                    </div>
+                                                    <button type="submit" class="btn purple mt-1" id="submitBtn">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <script>
+        const formC = document.getElementById('form');
+        formC.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
+
+        function validate() {
+            let returnVal = true;
+
+            const enDescValue = document.getElementById('enDesc').value.trim();
+            const frDescValue = document.getElementById('frDesc').value.trim();
+
+            if (enDescValue == '') {
+                document.getElementById('enDescErr').innerText = 'Please enter english description.';
+                returnVal = false;
+            } else {
+                document.getElementById('enDescErr').innerText = '';
+            }
+
+            if (frDescValue == '') {
+                document.getElementById('frDescErr').innerText = 'Please enter french description.';
+                returnVal = false;
+            } else {
+                document.getElementById('frDescErr').innerText = '';
+            }
+
+            if (returnVal) {
+                document.getElementById('submitBtn').disabled = true;
+                formC.submit();
+            }
+        }
+    </script>
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- END VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

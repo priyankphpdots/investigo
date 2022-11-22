@@ -1,0 +1,331 @@
+<!-- BEGIN: Header-->
+<header class="page-topbar" id="header">
+    <div class="navbar navbar-fixed">
+        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-light">
+            <div class="nav-wrapper">
+                <!-- <div class="header-search-wrapper hide-on-med-and-down">
+                    <i class="material-icons">search</i>
+                    <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Search..." data-search="template-list">
+                    <ul class="search-list collection display-none"></ul>
+                </div> -->
+                <ul class="navbar-list right">
+                    <!-- <li class="hide-on-large-only search-input-wrapper">
+                        <a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);">
+                            <i class="material-icons">search</i>
+                        </a>
+                    </li> -->
+                    <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none</i></a>
+                        <ul class="dropdown-content" id="notifications-dropdown" tabindex="0">
+                            <li tabindex="0">
+                                <h6>NOTIFICATIONS<a class="right" href="/admin/withdraw" style="color: #03a9f4;">view all</a></h6>
+                            </li>
+                            <li class="divider" tabindex="0"></li>
+                            <li class="notification" tabindex="0"><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Loading....</a></li>
+                            <li class="notification" tabindex="0"><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Loading....</a></li>
+                            <li class="notification" tabindex="0"><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Loading....</a></li>
+                            <li class="notification" tabindex="0"><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Loading....</a></li>
+                            <li class="notification" tabindex="0"><a class="black-text" href="#!"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Loading....</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+                            <span class="avatar-status">
+                                <% if (typeof image != 'undefined') { %>
+                                <img src="<%= image %>" alt="avatar">
+                                <% } else { %>
+                                <img src="/uploads/default_user.jpg" alt="avatar">
+                                <% } %>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="dropdown-content" id="profile-dropdown">
+                    <li>
+                        <a class="grey-text text-darken-1" href="/admin/profile"><i class="material-icons">person_outline</i>Profile</a>
+                    </li>
+                    <li>
+                        <a class="grey-text text-darken-1" href="/admin/changepass"><i class="material-icons">lock_outline</i>Change Password</a>
+                    </li>
+                    <li>
+                        <a class="grey-text text-darken-1" href="/admin/logout"><i class="material-icons">keyboard_tab</i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <nav class="display-none search-sm">
+                <div class="nav-wrapper">
+                    <form id="navbarForm">
+                        <div class="input-field search-input-sm">
+                            <input class="search-box-sm mb-0" type="search" required="" id="search"
+                                placeholder="Search..." data-search="template-list">
+                            <label class="label-icon" for="search"><i
+                                    class="material-icons search-sm-icon">search</i></label><i
+                                class="material-icons search-sm-close">close</i>
+                            <ul class="search-list collection search-list-sm display-none"></ul>
+                        </div>
+                    </form>
+                </div>
+            </nav> -->
+        </nav>
+    </div>
+</header>
+<!-- END: Header-->
+<!-- BEGIN: SideNav-->
+<aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-dark sidenav-active-rounded">
+    <div class="brand-sidebar">
+        <h1 class="logo-wrapper">
+            <a class="brand-logo darken-1" href="/admin">
+                <img class="hide-on-med-and-down" src="/app-assets/images/logo/logo-light.svg" alt="materialize logo" />
+                <img class="show-on-medium-and-down hide-on-med-and-up" src="/app-assets/images/logo/favicon.png" alt="materialize logo" />
+                <!-- <span class="logo-text hide-on-med-and-down">Investigo</span> -->
+            </a>
+            <!-- <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a> -->
+        </h1>
+    </div>
+    <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="accordion">
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url == '/admin' || url == '/admin/' ? 'active' : ''%>" href="/admin">
+                <i class="material-icons">desktop_windows</i>
+                <span class="menu-title" data-i18n="Dashboard">Dashboard</span>
+            </a>
+        </li>
+        <li class="navigation-header">
+            <a class="navigation-header-text">Orders</a>
+            <i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/order') ? 'active' : '' %>" href="/admin/order">
+                <i class="material-icons">receipt</i>
+                <span class="menu-title">Orders</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/investment') ? 'active' : '' %>" href="/admin/investment">
+                <i class="material-icons">monetization_on</i>
+                <span class="menu-title">Investment</span>
+            </a>
+        </li>
+        <li class="navigation-header">
+            <a class="navigation-header-text">manage</a>
+            <i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold <%= url.startsWith('/admin/cms') ? 'active' : '' %>">
+            <a class="collapsible-header waves-effect waves-cyan" href="javascript:void(0);">
+                <i class="material-icons">content_paste</i>
+                <span class="menu-title" data-i18n="Pages">Content Pages</span>
+            </a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <!-- <li>
+                        <a class="<%= url.startsWith('/admin/cms/about_us') ? 'active' : '' %>" href="/admin/cms/about_us">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Contact">About Us</span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/privacy_policy') ? 'active' : '' %>" href="/admin/cms/privacy_policy">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/faqs') ? 'active' : '' %>" href="/admin/cms/faqs">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">FAQs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/career') ? 'active' : '' %>" href="/admin/cms/career">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Career</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/terms_con') ? 'active' : '' %>" href="/admin/cms/terms_con">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Terms & Conditions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/cookie_policy') ? 'active' : '' %>" href="/admin/cms/cookie_policy">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Cookie Policy</span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a class="<%= url.startsWith('/admin/cms/contact') ? 'active' : '' %>" href="/admin/cms/contact">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Contact Us</span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/key_risks') ? 'active' : '' %>" href="/admin/cms/key_risks">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Key Risks</span>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a class="<%= url.startsWith('/admin/cms/event') ? 'active' : '' %>" href="/admin/cms/event">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Events</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="<%= url.startsWith('/admin/cms/update') ? 'active' : '' %>" href="/admin/cms/update">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Key Updates</span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="<%= url.startsWith('/admin/cms/event/') ? 'active' : '' %>">
+                        <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0"><i class="material-icons">radio_button_unchecked</i>Events</a>
+                        <div class="collapsible-body">
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <li>
+                                    <a class="<%= url.startsWith('/admin/cms/event/project') ? 'active' : '' %>" href="/admin/cms/event/project">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">Project Events</span>
+                                    </a>
+                                    <a class="<%= url.startsWith('/admin/cms/event/benefit') ? 'active' : '' %>" href="/admin/cms/event/benefit">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">Benefit Events</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="<%= url.startsWith('/admin/cms/update/') ? 'active' : '' %>">
+                        <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0"><i class="material-icons">radio_button_unchecked</i>Key Updates</a>
+                        <div class="collapsible-body">
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <li>
+                                    <a class="<%= url.startsWith('/admin/cms/update/project') ? 'active' : '' %>" href="/admin/cms/update/project">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">For Project</span>
+                                    </a>
+                                    <a class="<%= url.startsWith('/admin/cms/update/benefit') ? 'active' : '' %>" href="/admin/cms/update/benefit">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">For My Benefit</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </li>
+        <li class="bold <%= url.startsWith('/admin/event/') || url.startsWith('/admin/update/') ? 'active' : '' %>">
+            <a class="collapsible-header waves-effect waves-cyan" href="javascript:void(0);">
+                <i class="material-icons">event</i>
+                <span class="menu-title" data-i18n="Pages">Event and Updates</span>
+            </a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li>
+                        <a class="<%= url.startsWith('/admin/event') ? 'active' : '' %>" href="/admin/event">
+                            <i class="material-icons">radio_button_unchecked</i>
+                            <span data-i18n="Blog">Events</span>
+                        </a>
+                    </li>
+                    <li class="<%= url.startsWith('/admin/update/') ? 'active' : '' %>">
+                        <a class="collapsible-header waves-effect waves-cyan" href="JavaScript:void(0)" tabindex="0"><i class="material-icons">radio_button_unchecked</i>Key Updates</a>
+                        <div class="collapsible-body">
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <li>
+                                    <a class="<%= url.startsWith('/admin/update/project') ? 'active' : '' %>" href="/admin/update/project">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">For Project</span>
+                                    </a>
+                                    <a class="<%= url.startsWith('/admin/update/benefit') ? 'active' : '' %>" href="/admin/update/benefit">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Blog">For My Benefit</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/blog') ? 'active' : '' %>" href="/admin/blog">
+                <i class="material-icons">format_align_left</i>
+                <span class="menu-title">Blogs</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/package') ? 'active' : '' %>" href="/admin/package">
+                <i class="material-icons">view_carousel</i>
+                <span class="menu-title">Packages</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/project') ? 'active' : '' %>" href="/admin/project">
+                <i class="material-icons">widgets</i>
+                <span class="menu-title">Projects</span>
+            </a>
+        </li>
+        <li class="navigation-header">
+            <a class="navigation-header-text">User Pages</a>
+            <i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/user') ? 'active' : '' %>" href="/admin/user">
+                <i class="material-icons">person</i>
+                <span class="menu-title">User Management</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/withdraw') ? 'active' : '' %>" href="/admin/withdraw">
+                <i class="material-icons">account_balance_wallet</i>
+                <span class="menu-title">Withdraw requests</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/message') ? 'active' : '' %>" href="/admin/message">
+                <i class="material-icons">message</i>
+                <span class="menu-title">User Messages</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/application') ? 'active' : '' %>" href="/admin/application">
+                <i class="material-icons">find_in_page</i>
+                <span class="menu-title">Job Applications</span>
+            </a>
+        </li>
+        <li class="navigation-header">
+            <a class="navigation-header-text">Admins</a>
+            <i class="navigation-header-icon material-icons">more_horiz</i>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/admin') ? 'active' : '' %>" href="/admin/admin">
+                <i class="material-icons">account_circle</i>
+                <span class="menu-title">Admin List</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan <%= url.startsWith('/admin/newsletter') ? 'active' : '' %>" href="/admin/newsletter">
+                <i class="material-icons">format_list_bulleted</i>
+                <span class="menu-title">Newsletter</span>
+            </a>
+        </li>
+    </ul>
+    <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+</aside>
+<script>
+    const bellIcon = document.querySelector('.notification-button');
+    const ul = document.querySelector('#notifications-dropdown');
+    bellIcon.addEventListener('click', async e => {
+        const response = await fetch('/admin/notification');
+        const data = await response.json();
+        const elements = document.getElementsByClassName('notification');
+        while (elements.length > 0) {
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        data.withdraws.forEach(element => {
+            let z = document.createElement('li');
+            z.className = "notification";
+            z.tabIndex = "0";
+            z.innerHTML = `<a class="black-text" href="/admin/withdraw/${element._id}"><span class="material-icons icon-bg-circle teal small">account_balance_wallet</span> Withdraw request by ${element.user.fname} ${element.user.lname}</a>`;
+            ul.appendChild(z);
+        });
+    });
+</script>

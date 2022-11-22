@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>Project Gallery | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/magnific-popup/magnific-popup.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/hover-effects/media-hover-effects.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns   " data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Project gallery</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <a class="btn gradient-45deg-purple-deep-orange pull-right btn-breadcrumbs modal-trigger" href="#add">Add image</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="add" class="modal">
+                <div class="modal-content">
+                    <h5>Add gallery image</h5>
+                    <form method="POST" action="/admin/project/gallery/<%= project.id %>/add" enctype="multipart/form-data">
+                        <div class="input-field m12">
+                            Upload image
+                            <input type="file" accept="image/png, image/jpeg" name="image" id="input-file-now" class="dropify" data-disable-remove="true" />
+                            <small>
+                                <div class="error"></div>
+                            </small>
+                        </div>
+                        <button type="submit" class="btn purple submitBtn">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <h5 class="col s12"><%= project.en.title %></h5>
+                            <!-- errors -->
+                            <div class="col s12">
+                                <%- messages('messages', locals) %>
+                            </div>
+
+                            <% if (project.gallery.length) { %>
+                            <% for( let i = 0; i < project.gallery.length; i++ ) { %>
+                            <div class="col s12 m3 grid">
+                                <figure class="effect-zoe z-depth-2">
+                                    <img src="<%= project.gallery[i] %>" alt="gallery image" onerror="this.onerror=null; this.src='/uploads/no_image_available_426x242.jpg';" />
+                                    <figcaption>
+                                        <p class="icon-links">
+                                            <a href="/admin/project/gallery/<%= project.id %>/delete/<%= i %>" onclick="return confirm('Are you sure?')"><i class="material-icons">delete</i></a>
+                                            <a class="modal-trigger" href="#<%= i %>"><i class="material-icons">create</i></a>
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div id="<%= i %>" class="modal">
+                                <div class="modal-content">
+                                    <h5>Edit gallery image</h5>
+                                    <form method="POST" action="/admin/project/gallery/<%= project.id %>/edit/<%= i %>" enctype="multipart/form-data">
+                                        <div class="input-field m12">
+                                            Upload image
+                                            <input type="file" accept="image/png, image/jpeg" name="image" id="input-file-now" class="dropify" data-disable-remove="true" data-default-file="<%= project.gallery[i] %>" />
+                                            <small>
+                                                <div class="error"></div>
+                                            </small>
+                                        </div>
+                                        <button type="submit" class="btn purple submitBtn">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } %>
+                            <% } else { %>
+                            <div class="col s12">
+                                <p>No gallery images!</p>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="/app-assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/app-assets/vendors/imagesloaded.pkgd.min.js"></script>
+    <script src="/app-assets/vendors/masonry.pkgd.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <script src="/app-assets/js/search.js"></script>
+    <script src="/app-assets/js/custom/custom-script.js"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="/app-assets/js/scripts/media-hover-effects.js"></script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- ===== ckeditor JavaScript ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+    <script src="/app-assets/js/scripts/form-file-uploads.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.modal').modal();
+        });
+
+        const forms = document.querySelectorAll("form");
+        forms.forEach((elem) => {
+            elem.addEventListener('submit', (e) => {
+                e.preventDefault();
+                validate(e.target);
+            })
+        });
+
+        function validate(el) {
+            let returnVal = true;
+
+            const filevalue = el.querySelector('#input-file-now').value;
+            const ext = filevalue.substring(filevalue.lastIndexOf('.') + 1);
+            const errorEl = el.querySelector('.error');
+
+            if (ext == 'png' || ext == 'jpeg' || ext == 'jpg') {
+                errorEl.innerText = '';
+            } else if (filevalue == '') {
+                errorEl.innerText = 'Please choose a file.';
+                returnVal = false;
+            } else {
+                errorEl.innerText = 'Wrong file type.';
+                returnVal = false;
+            }
+
+            if (returnVal) {
+                el.querySelector('.submitBtn').disabled = true;
+                el.submit();
+            }
+        }
+    </script>
+</body>
+
+</html>

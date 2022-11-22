@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Withdraw details | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/data-tables.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Withdraw details</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/withdraw">Withdraw</a></li>
+                                <li class="breadcrumb-item active">Withdraw details</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <!-- Page Length Options -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Amount:</th>
+                                                            <td><%= withdraw.amount %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Card:</th>
+                                                            <td><%= withdraw.paymentMethod.card %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Network:</th>
+                                                            <td><%= withdraw.paymentMethod.network %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Expiry:</th>
+                                                            <td><%= withdraw.paymentMethod.expiry %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Date and Time:</th>
+                                                            <td><%= withdraw.date.toLocaleDateString('en-GB', { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: 'UTC' }) %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="mb-2 mt-2">User details:</h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Username:</th>
+                                                            <td><%= withdraw.user.fname + " " + withdraw.user.lname %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>E-mail:</th>
+                                                            <td><%= withdraw.user.email %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>userId:</th>
+                                                            <td><%= withdraw.user.userId %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="mb-2 mt-2">Order details:</h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Date:</th>
+                                                            <td><%= withdraw.order?.orderDate.toLocaleDateString('en-GB') %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Amount:</th>
+                                                            <td><%= withdraw.order?.amount %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <a onclick="history.back()" class="btn btn-danger mt-2" style="margin-left: 15px;">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

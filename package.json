@@ -1,0 +1,47 @@
+{
+  "name": "investigo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app -e js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "aws-sdk": "^2.1237.0",
+    "axios": "^1.0.0",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
+    "custom-id": "^1.2.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "express-messages": "^1.0.1",
+    "express-validator": "^6.14.0",
+    "fs-extra": "^10.1.0",
+    "http-errors": "^2.0.0",
+    "i18next": "8.2.1",
+    "i18next-express-middleware": "1.0.5",
+    "i18next-node-fs-backend": "1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "multer": "^1.4.4",
+    "multer-s3": "^3.0.1",
+    "node-cron": "^3.0.2",
+    "otplib": "^12.0.1",
+    "qrcode": "^1.5.1",
+    "socket.io": "^4.5.1",
+    "stripe": "^9.16.0",
+    "twilio": "^3.82.1",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}

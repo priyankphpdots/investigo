@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Order details | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/data-tables.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Order details</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/order">Order</a></li>
+                                <li class="breadcrumb-item active">Order details</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <!-- Page Length Options -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <!-- <h4 class="card-title">Order details</h4> -->
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width: 200px;">Order Date:</th>
+                                                            <td><%= order.orderDate.toLocaleDateString('en-GB') %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>End Date:</th>
+                                                            <td><%= order.endDate.toLocaleDateString('en-GB') %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Package:</th>
+                                                            <td><%= order.package.en.title %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Project:</th>
+                                                            <td><%= order.project.en.title %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Amount:</th>
+                                                            <td><%= order.package.price %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Return:</th>
+                                                            <td><%= order.returnAmount %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <h6 class="mb-2 mt-2">User details</h6>
+                                                <table class="display striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 200px;">Username:</td>
+                                                            <td><%= order.user.fname + " " + order.user.lname %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>E-mail:</td>
+                                                            <td><%= order.user.email %></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>userId:</td>
+                                                            <td><%= order.user.userId %></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <a onclick="history.back()" class="btn btn-danger mt-2" style="margin-left: 15px;">Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

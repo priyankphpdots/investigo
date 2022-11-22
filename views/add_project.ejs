@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Add Project | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+        <!-- BEGIN: Page Main-->
+        <div id="main">
+            <div class="row">
+                <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                <h5 class="breadcrumbs-title mt-0 mb-0"><span>Add Project</span></h5>
+                            </div>
+                            <div class="col s12 m6 l6 right-align-md">
+                                <ol class="breadcrumbs mb-0">
+                                    <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/admin/project">Project</a></li>
+                                    <li class="breadcrumb-item active">Add Project</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="container">
+                        <div class="section">
+                            <div class="row">
+                                <div class="col s12">
+                                    <%# messages %>
+                                    <%- messages('messages', locals) %>
+                                </div>
+                            </div>
+                            <form method="POST" onsubmit="validate()" action="/admin/project/add" id="form" enctype="multipart/form-data">
+                                <div class="col m6 s12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h4 class="card-title">English</h4>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Title" id="EnTitle" name="EnTitle" type="text">
+                                                        <label for="EnTitle">Title</label>
+                                                        <small>
+                                                            <div id="EnTitleErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <textarea id="EnDesc" class="materialize-textarea fixHeightTA" name="EnDesc" placeholder="Enter description"></textarea>
+                                                        <label for="EnDesc">Description</label>
+                                                        <small>
+                                                            <div id="EnDescErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <textarea id="EnReasons" class="materialize-textarea fixHeightTA" name="EnReasons" placeholder="Enter Reasons to invest"></textarea>
+                                                        <label for="EnReasons">Reasons to invest</label>
+                                                        <small>
+                                                            <div id="EnReasonsErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col m6 s12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <h4 class="card-title">French</h4>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Title" id="FrTitle" name="FrTitle" type="text">
+                                                        <label for="FrTitle">Title</label>
+                                                        <small>
+                                                            <div id="FrTitleErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <textarea id="FrDesc" class="materialize-textarea fixHeightTA" name="FrDesc" placeholder="Enter description"></textarea>
+                                                        <label for="FrDesc">Description</label>
+                                                        <small>
+                                                            <div id="FrDescErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <textarea id="FrReasons" class="materialize-textarea fixHeightTA" name="FrReasons" placeholder="Enter Reasons to invest"></textarea>
+                                                        <label for="FrReasons">Reasons to invest</label>
+                                                        <small>
+                                                            <div id="FrReasonsErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <div class="input-field col m6 s12">
+                                                        <select id="cat" name="category">
+                                                            <option value="">Select category</option>
+                                                            <option value="Transport">Transport</option>
+                                                            <option value="Agriculture">Agriculture</option>
+                                                            <option value="Real Estate">Real Estate</option>
+                                                            <option value="Mine Extraction">Mine Extraction</option>
+                                                            <option value="Hotel">Hotel</option>
+                                                            <option value="Telecommunication">Telecommunication</option>
+                                                        </select>
+                                                        <label>Select category</label>
+                                                        <small><div id="error2" class="error"></div></small>
+                                                    </div>
+                                                    <div class="input-field col m6 s12">
+                                                        <select id="property" name="property">
+                                                            <option value="">Select Property</option>
+                                                            <option value="Commercial">Commercial</option>
+                                                            <option value="Residential">Residential</option>
+                                                        </select>
+                                                        <label>Select property</label>
+                                                        <small><div id="error3" class="error"></div></small>
+                                                    </div>
+                                                    <div class="input-field col m6 s12">
+                                                        <input placeholder="Total amount" id="totalAmount" name="totalAmount" type="number">
+                                                        <small><div id="error5" class="error"></div></small>
+                                                        <label for="totalAmount">Total amount</label>
+                                                    </div>
+                                                    <div class="input-field col m6 s12">
+                                                        <input placeholder="Monthly Return" id="monthlyReturn" name="monthlyReturn" type="text">
+                                                        <small><div id="monthlyReturnErr" class="error"></div></small>
+                                                        <label for="monthlyReturn">Monthly Return</label>
+                                                    </div>
+                                                    <!-- <div class="input-field col m6 s12">
+                                                        <input placeholder="City" id="city" name="city" type="text">
+                                                        <small><div id="cityErr" class="error"></div></small>
+                                                        <label for="city">City</label>
+                                                    </div> -->
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Location" id="location" name="location" type="text">
+                                                        <small><div id="error6" class="error"></div></small>
+                                                        <label for="location">Location</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Map url" id="url" name="url" type="text">
+                                                        <small><div id="error8" class="error"></div></small>
+                                                        <label for="url">Map url</label>
+                                                    </div>
+                                                    <div class="input-field col m4 s12">
+                                                        Upload image
+                                                        <input type="file" accept="image/png, image/jpeg" name="image" id="input-file-now" class="dropify" data-disable-remove="true" required/>
+                                                        <small><div id="error7" class="error"></div></small>
+                                                    </div>
+                                                    <div class="input-field col m4 s12">
+                                                        Upload gallery images
+                                                        <input type="file" accept="image/png, image/jpeg" name="gallery" class="dropify" data-disable-remove="true" multiple/>
+                                                        <small><div id="error7" class="error"></div></small>
+                                                    </div>
+                                                    <div class="input-field col m4 s12">
+                                                        Upload icon
+                                                        <input type="file" accept="image/png, image/jpeg" name="icon" id="icon" class="dropify" data-disable-remove="true" required/>
+                                                        <small><div id="iconErr" class="error"></div></small>
+                                                    </div>
+                                                    <button type="submit" class="btn purple ml-1" id="submitBtn">Submit</button>
+                                                    <a href="/admin/project" class="btn btn-danger">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content-overlay"></div>
+                </div>
+            </div>
+        </div>
+        <!-- END: Page Main-->
+
+        <script>
+            const formC = document.getElementById('form');
+
+            formC.addEventListener('submit', (e) => {
+                e.preventDefault();
+            })
+            function validate() {
+                let returnVal = true;
+
+                const EnTitleValue = document.getElementById('EnTitle').value.trim();
+                const FrTitleValue = document.getElementById('FrTitle').value.trim();
+                const EnDescValue = document.getElementById('EnDesc').value.trim();
+                const FrDescValue = document.getElementById('FrDesc').value.trim();
+                const EnReasonsValue = document.getElementById('EnReasons').value.trim();
+                const FrReasonsValue = document.getElementById('FrReasons').value.trim();
+                const categoryValue = document.getElementById('cat').value.trim();
+                const propertyValue = document.getElementById('property').value.trim();
+                const amountValue = document.getElementById('totalAmount').value.trim();
+                const monthlyReturnValue = document.getElementById('monthlyReturn').value.trim();
+                const locationValue = document.getElementById('location').value.trim();
+                // const cityValue = document.getElementById('city').value.trim();
+                const urlValue = document.getElementById('url').value.trim();
+                const filevalue = document.getElementById('input-file-now').value;
+                const ext = filevalue.substring(filevalue.lastIndexOf('.') + 1);
+                const iconvalue = document.getElementById('icon').value;
+                const iconExt = iconvalue.substring(iconvalue.lastIndexOf('.') + 1);
+
+                if (EnTitleValue == '') {
+                    document.getElementById('EnTitleErr').innerText = 'Please enter title.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('EnTitleErr').innerText = '';
+                }
+
+                if (FrTitleValue == '') {
+                    document.getElementById('FrTitleErr').innerText = 'Please enter title.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('FrTitleErr').innerText = '';
+                }
+                
+                if (EnDescValue == '') {
+                    document.getElementById('EnDescErr').innerText = 'Please enter description.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('EnDescErr').innerText = '';
+                }
+
+                if (FrDescValue == '') {
+                    document.getElementById('FrDescErr').innerText = 'Please enter description.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('FrDescErr').innerText = '';
+                }
+
+                if (EnReasonsValue == '') {
+                    document.getElementById('EnReasonsErr').innerText = 'Please enter reasons to invest.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('EnReasonsErr').innerText = '';
+                }
+
+                if (FrReasonsValue == '') {
+                    document.getElementById('FrReasonsErr').innerText = 'Please enter reasons to invest.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('FrReasonsErr').innerText = '';
+                }
+
+                if (categoryValue == '') {
+                    document.getElementById('error2').innerText = 'Please select category.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('error2').innerText = '';
+                }
+
+                if (propertyValue == '') {
+                    document.getElementById('error3').innerText = 'Please select property type.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('error3').innerText = '';
+                }
+
+                if (amountValue == '') {
+                    document.getElementById('error5').innerText = 'Please enter total amount.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('error5').innerText = '';
+                }
+
+                if (monthlyReturnValue == '') {
+                    document.getElementById('monthlyReturnErr').innerText = 'Please enter monthly return.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('monthlyReturnErr').innerText = '';
+                }
+
+                if (locationValue == '') {
+                    document.getElementById('error6').innerText = 'Please enter location.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('error6').innerText = '';
+                }
+
+                // if (cityValue == '') {
+                //     document.getElementById('cityErr').innerText = 'Please enter city.';
+                //     returnVal = false;
+                // } else {
+                //     document.getElementById('cityErr').innerText = '';
+                // }
+
+                if (ext == 'png' || ext == 'jpeg' || ext == 'jpg') {
+                    document.getElementById('error7').innerText = '';
+                } else {
+                    document.getElementById('error7').innerText = 'Wrong file type.';
+                    returnVal = false;
+                }
+
+                if (iconExt == 'png' || iconExt == 'jpeg' || iconExt == 'jpg') {
+                    document.getElementById('iconErr').innerText = '';
+                } else {
+                    document.getElementById('iconErr').innerText = 'Wrong file type.';
+                    returnVal = false;
+                }
+
+                if (urlValue == '') {
+                    document.getElementById('error8').innerText = 'Please enter map url.';
+                    returnVal = false;
+                } else {
+                    document.getElementById('error8').innerText = '';
+                }
+
+                if (returnVal) {
+                    document.getElementById('submitBtn').disabled = true;
+                    formC.submit();
+                }
+            }
+        </script>
+        <!-- BEGIN VENDOR JS-->
+        <script src="/app-assets/js/vendors.min.js"></script>
+        <!-- BEGIN VENDOR JS-->
+        <!-- BEGIN THEME  JS-->
+        <script src="/app-assets/js/plugins.js"></script>
+        <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+        <!-- END THEME  JS-->
+        <!-- ===== ckeditor JavaScript ===== -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+        <script src="/app-assets/js/scripts/form-file-uploads.min.js"></script>
+</body>
+<%- include('_layouts/alert') %>
+</html>

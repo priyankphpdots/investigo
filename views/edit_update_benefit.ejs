@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Edit Update | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Edit Update</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/update/benefit">Key Updates</a></li>
+                                <li class="breadcrumb-item active">Edit Update</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <!-- errors -->
+                                            <%- messages('messages', locals) %>
+                                            <form method="POST" onsubmit="validate()" action="/admin/update/benefit/edit/<%= update.id %>" id="form">
+                                                <div class="col m6 s12">
+                                                    <h4 class="card-title">English</h4>
+                                                    <div class="input-field">
+                                                        <input placeholder="Name" id="EnName" name="EnName" type="text" value="<%= update.en.name %>">
+                                                        <label for="EnName">Name</label>
+                                                        <small>
+                                                            <div id="EnNameErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="col m6 s12">
+                                                    <h4 class="card-title">French</h4>
+                                                    <div class="input-field">
+                                                        <input placeholder="Name" id="FrName" name="FrName" type="text" value="<%= update.fr.name %>">
+                                                        <label for="FrName">Name</label>
+                                                        <small>
+                                                            <div id="FrNameErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Date" id="date" name="date" type="date" value="<%= date %>">
+                                                    <label for="date">Date</label>
+                                                    <small>
+                                                        <div id="FrAnsErr" class="error"></div>
+                                                    </small>
+                                                </div>
+                                                <button type="submit" class="btn purple ml-1" id="submitBtn">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <script>
+        const formC = document.getElementById('form');
+
+        formC.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
+
+        function validate() {
+            let returnVal = true;
+
+            const EnNameValue = document.getElementById('EnName').value.trim();
+            const FrNameValue = document.getElementById('FrName').value.trim();
+
+            if (EnNameValue == '') {
+                document.getElementById('EnNameErr').innerText = 'Please enter update name.';
+                returnVal = false;
+            } else {
+                document.getElementById('EnNameErr').innerText = '';
+            }
+
+            if (FrNameValue == '') {
+                document.getElementById('FrNameErr').innerText = 'Please enter update name.';
+                returnVal = false;
+            } else {
+                document.getElementById('FrNameErr').innerText = '';
+            }
+
+            if (returnVal) {
+                document.getElementById('submitBtn').disabled = true;
+                formC.submit();
+            }
+        }
+    </script>
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

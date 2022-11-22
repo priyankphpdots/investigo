@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Dashboard | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/pages/dashboard.css">
+    <!-- END: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/custom/custom.css">
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div class="col s12">
+                <div class="container">
+                    <div class="section">
+                        <!--card stats start-->
+                        <div id="card-stats" class="pt-0">
+                            <div class="row">
+                                <!-- messages -->
+                                <%- messages('messages', locals) %>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6 l6 xl3">
+                                    <a href="/admin/order">
+                                        <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text animate fadeLeft">
+                                            <div class="padding-4">
+                                                <div class="row">
+                                                    <div class="col s7 m7">
+                                                        <i class="material-icons background-round mt-5">add_shopping_cart</i>
+                                                        <p>Orders</p>
+                                                    </div>
+                                                    <div class="col s5 m5 right-align">
+                                                        <h5 class="mb-0 white-text" style="font-size: 1.4rem;"><%= newOrders %></h5>
+                                                        <p class="no-margin">Today</p>
+                                                        <p><%= orders %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col s12 m6 l6 xl3">
+                                    <a href="/admin/user">
+                                        <div class="card gradient-45deg-red-pink gradient-shadow min-height-100 white-text animate fadeLeft">
+                                            <div class="padding-4">
+                                                <div class="row">
+                                                    <div class="col s7 m7">
+                                                        <i class="material-icons background-round mt-5">perm_identity</i>
+                                                        <p>Users</p>
+                                                    </div>
+                                                    <div class="col s5 m5 right-align">
+                                                        <h5 class="mb-0 white-text" style="font-size: 1.4rem;"><%= newUsers %></h5>
+                                                        <p class="no-margin">Today</p>
+                                                        <p><%= users %></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col s12 m6 l6 xl3">
+                                    <div class="card gradient-45deg-green-teal gradient-shadow min-height-100 white-text animate fadeRight">
+                                        <div class="padding-4">
+                                            <div class="row">
+                                                <div class="col s7 m7">
+                                                    <i class="material-icons background-round mt-5">attach_money</i>
+                                                    <p>Investments</p>
+                                                </div>
+                                                <div class="col s5 m5 right-align">
+                                                    <h5 class="mb-0 white-text" style="font-size: 1.4rem;">$<%= newInvestment %></h5>
+                                                    <p class="no-margin">Today</p>
+                                                    <p>$<%= allInvestment %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6 l6 xl3">
+                                    <div class="card gradient-45deg-amber-amber gradient-shadow min-height-100 white-text animate fadeRight">
+                                        <div class="padding-4">
+                                            <div class="row">
+                                                <div class="col s7 m7">
+                                                    <i class="material-icons background-round mt-5">timeline</i>
+                                                    <p>Interest</p>
+                                                </div>
+                                                <div class="col s5 m5 right-align">
+                                                    <h5 class="mb-0 white-text" style="font-size: 1.4rem;">$<%= newInterest %></h5>
+                                                    <p class="no-margin">Today</p>
+                                                    <p>$<%= allInterest %></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card chartDiv">
+                                <div class="card-content row">
+                                    <div class="col s12">
+                                        <ul class="tabs">
+                                            <li class="tab col m3"><a href="#test1">Orders</a></li>
+                                            <li class="tab col m3"><a href="#test2">Users</a></li>
+                                            <li class="tab col m3"><a href="#test3">Investments</a></li>
+                                            <li class="tab col m3"><a href="#test4">Interests</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col s12">
+                                        <input id="selectMonth" class="monthInput right mt-1" type="month" value="<%= currentMonth %>">
+                                    </div>
+                                    <div id="test1" class="col s12"><canvas id="orders" height="110px"></canvas></div>
+                                    <div id="test2" class="col s12"><canvas id="users" height="110px"></canvas></div>
+                                    <div id="test3" class="col s12"><canvas id="investments" height="110px"></canvas></div>
+                                    <div id="test4" class="col s12"><canvas id="interests" height="110px"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--card stats end-->
+                    </div>
+                    <!--end container-->
+                </div>
+            </div>
+            <!-- <div class="content-overlay"></div> -->
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <!-- BEGIN: Footer-->
+    <!-- <footer class="page-footer footer footer-static footer-light navbar-border navbar-shadow">
+            <div class="footer-copyright">
+                <div class="container"><span>&copy; 2020 <a href="http://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">PIXINVENT</a> All rights reserved.</span><span class="right hide-on-small-only">Design and Developed by <a href="https://pixinvent.com/">PIXINVENT</a></span></div>
+            </div>
+        </footer> -->
+    <!-- END: Footer-->
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="/app-assets/vendors/chartjs/chart.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+    <script src="/dashboardCharts.js"></script>
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

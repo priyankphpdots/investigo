@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Edit Blog | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" href="/tagsinput.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Edit Blog</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/blog">Blog</a></li>
+                                <li class="breadcrumb-item active">Edit Blog</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s12">
+                                <%# messages %>
+                                <%- messages('messages', locals) %>
+                            </div>
+                        </div>
+                        <form method="POST" onsubmit="validate()" action="/admin/blog/edit/<%= blog._id %>" id="form" enctype="multipart/form-data">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <h4 class="card-title">English</h4>
+                                                <div class="input-field col s12">
+                                                    <input placeholder="Title" id="EnTitle" name="EnTitle" type="text"  value="<%= blog.en.title %>">
+                                                    <small>
+                                                        <div id="EnTitleErr" class="error"></div>
+                                                    </small>
+                                                    <label for="EnTitle">Title</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <textarea id="EnDesc" class="materialize-textarea" name="EnDesc" placeholder="Enter description"><%= blog.en.description %></textarea>
+                                                    <label for="EnDesc">Description</label>
+                                                    <small>
+                                                        <div id="EnDescErr" class="error"></div>
+                                                    </small>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    Content
+                                                    <textarea name="EnContent" class="form-control ta" id="ta1" cols="30" rows="10" placeholder="content"><%= blog.en.content%></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <h4 class="card-title">French</h4>
+                                                <div class="input-field col s12">
+                                                    <input placeholder="French Title" id="FrTitle" name="FrTitle" type="text" value="<%= blog.fr.title %>">
+                                                    <small>
+                                                        <div id="FrTitleErr" class="error"></div>
+                                                    </small>
+                                                    <label for="FrTitle">Title</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <textarea id="FrDesc" class="materialize-textarea" name="FrDesc" placeholder="Enter description in French"><%= blog.fr.description %></textarea>
+                                                    <label for="FrDesc">Description</label>
+                                                    <small>
+                                                        <div id="FrDescErr" class="error"></div>
+                                                    </small>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    Content
+                                                    <textarea name="FrContent" class="form-control ta" id="ta2" cols="30" rows="10" placeholder="content"><%= blog.fr.content %></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <!-- <h4 class="card-title"></h4> -->
+                                                <div class="input-field col s12">
+                                                    <select id="cat" name="category">
+                                                        <option value="" <%= blog.category == '' ? 'selected' : '' %>>Select category</option>
+                                                        <option value="News" <%= blog.category == 'News' ? 'selected' : '' %>>News</option>
+                                                        <option value="Articals" <%= blog.category == 'Articals' ? 'selected' : '' %>>Articals</option>
+                                                        <option value="Resources" <%= blog.category == 'Resources' ? 'selected' : '' %>>Resources</option>
+                                                    </select>
+                                                    <label>Select category</label>
+                                                    <small>
+                                                        <div id="catErr" class="error"></div>
+                                                    </small>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    Upload Image
+                                                    <input type="file" accept="image/png, image/jpeg" name="image" id="input-file-now" class="dropify" data-disable-remove="true" data-default-file="<%= blog.image %>" />
+                                                    <small>
+                                                        <div id="error4" class="error"></div>
+                                                    </small>
+                                                </div>
+                                                <div class="input-field col m12 s12">
+                                                    <input placeholder="" id="form-tags-1" name="tags" type="text" value="<%= blog.tags.join(',') %>">
+                                                    <label for="form-tags-1_tag" style="top: -5px;">Tags</label>
+                                                </div>
+                                                <div class="col s12">
+                                                    <button type="submit" class="btn purple" id="submitBtn">Submit</button>
+                                                    <a href="/admin/blog" class="btn btn-danger">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <script>
+        const formC = document.getElementById('form');
+
+        formC.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
+
+        function validate() {
+            let returnVal = true;
+
+            const EnTitleValue = document.getElementById('EnTitle').value.trim();
+            const EnDescValue = document.getElementById('EnDesc').value.trim();
+            const FrTitleValue = document.getElementById('FrTitle').value.trim();
+            const FrDescValue = document.getElementById('FrDesc').value.trim();
+            const catValue = document.getElementById('cat').value;
+            const filevalue = document.getElementById('input-file-now').value;
+            const ext = filevalue.substring(filevalue.lastIndexOf('.') + 1);
+
+            if (EnTitleValue == '') {
+                document.getElementById('EnTitleErr').innerText = 'Please enter blog title.';
+                returnVal = false;
+            } else {
+                document.getElementById('EnTitleErr').innerText = '';
+            }
+
+            if (FrTitleValue == '') {
+                document.getElementById('FrTitleErr').innerText = 'Please enter blog title.';
+                returnVal = false;
+            } else {
+                document.getElementById('FrTitleErr').innerText = '';
+            }
+
+            if (EnDescValue == '') {
+                document.getElementById('EnDescErr').innerText = 'Please enter blog description.';
+                returnVal = false;
+            } else {
+                document.getElementById('EnDescErr').innerText = '';
+            }
+
+            if (FrDescValue == '') {
+                document.getElementById('FrDescErr').innerText = 'Please enter blog description.';
+                returnVal = false;
+            } else {
+                document.getElementById('FrDescErr').innerText = '';
+            }
+
+            if (filevalue == '') {
+                document.getElementById('error4').innerText = '';
+            } else if (ext == 'png' || ext == 'jpeg' || ext == 'jpg') {
+                document.getElementById('error4').innerText = '';
+            } else {
+                document.getElementById('error4').innerText = 'Wrong file type.';
+                returnVal = false;
+            }
+
+            if (catValue == '') {
+                document.getElementById('catErr').innerText = 'Please select blog category.';
+                returnVal = false;
+            } else {
+                document.getElementById('catErr').innerText = '';
+            }
+
+            if (returnVal) {
+                document.getElementById('submitBtn').disabled = true;
+                formC.submit();
+            }
+        }
+    </script>
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+    <!-- ===== JavaScript ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+    <script src="/app-assets/js/scripts/form-file-uploads.min.js"></script>
+    <script src="/tagsinput.js"></script>
+    <!-- ===== ckeditor JavaScript ===== -->
+    <script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+    <script>
+        $(function() {
+            const elements = $('textarea.ta').get();
+            Object.keys(elements).forEach(i => {
+                CKEDITOR.replace(elements[i].id, {
+                    filebrowserUploadUrl: '/admin/blog/upload',
+                    format_tags: 'p;h1;h2;h3;h4;h5;h6'
+                });
+            });
+
+            if ($("[data-fancybox]").length) {
+                $("[data-fancybox]").fancybox();
+            }
+        });
+    </script>
+</body>
+<%- include('_layouts/alert') %>
+
+</html>

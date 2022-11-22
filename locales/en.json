@@ -1,0 +1,83 @@
+{
+    "auth": {
+        "invalidToken": "Invalid token or expired.",
+        "someError": "Some error occured!",
+        "login": "Please login first.",
+        "loginAgain": "You are logged out, please login again.",
+        "blocked": "Sorry! You are blocked, Please contact Admin.",
+        "provideToken": "Please Provide Auth token.",
+        "logout": "logged out successfully.",
+        "logoutAll": "logged out all devices."
+    },
+    "validation": {
+        "fname": "First name is required.",
+        "lname": "Last name is required.",
+        "email": "Email is required.",
+        "emailInvalid": "Email is Invalid.",
+        "pass": "Password is required.",
+        "passInvalid": "Password should be atleast 6 characters long.",
+        "device": "Device is required.",
+        "youAre": "Please select type of account.",
+        "phone": "Phone is required.",
+        "subject": "Subject is required.",
+        "message": "Message is required.",
+        "resume": "Please provide resume.",
+        "resumeFile": "Wrong file type! (Please upload only pdf, doc or docx)",
+        "imageFile": "Wrong file type! (Please upload only jpg or png.)",
+        "cardNum": "Card number is required.",
+        "cardNetwork": "Card network is required.",
+        "cardExpiry": "Expiry date is required."
+    },
+    "error": {
+        "emailRegG": "Already registered with google.",
+        "emailRegF": "Already registered with facebook.",
+        "emailReg": "Email already registered.",
+        "nationalReg": "National number is already registered.",
+        "invalidCred": "Invalid email or password!",
+        "loginGoogle": "Please login with google.",
+        "loginFacebook": "Please login with facebook.",
+        "loginCred": "Please login with email and password.",
+        "withdrawOrder": "Withdraw already request for this order.",
+        "server": "An error occured, Please try again."
+    },
+    "verifyPhone": {
+        "phoneInvalid": "Invalid phone number.",
+        "failOtp": "Failed to verify otp.",
+        "success": "Phone number verified succefully."
+    },
+    "changePass": {
+        "google": "You are a google user can not change password.",
+        "facebook": "You are a facebook user can not change password.",
+        "pass": "Password should be atleast 6 characters long.",
+        "newPass": "New Password should be atleast 6 characters long.",
+        "cfPass": "Confirm Password should be atleast 6 characters long.",
+        "wrongPass": "Wrong current password.",
+        "samePass": "New password can not be same as current password.",
+        "notMatch": "Password and confirm password do not match.",
+        "updated": "Password updated."
+    },
+    "2fa": {
+        "already": "Two factor authentication already enabled.",
+        "enabled": "Two factor authentication enabled.",
+        "disabled": "Two factor authentication disabled.",
+        "required": "Two Factor authentication required.",
+        "notEnabled": "Two factor authentication is not enabled!",
+        "failCode": "Fail to verify code!",
+        "wrongRecovery": "Wrong recovery code."
+    },
+    "notReg": "Please enter registerd email.",
+    "passChanged": "Password changed successfully.",
+    "msg": "Message sent successfully.",
+    "application": "Application registerd successfully",
+    "notFound": {
+        "blog": "Blog not found.",
+        "project": "Project not found."
+    },
+    "newsletter": {
+        "already": "Email is already in our newsletter list.",
+        "success": "Email added to our newsletter list."
+    },
+    "payment": "Payment method added.",
+    "withdraw": "Withdraw request created.",
+    "notYet": "Can not withdraw yet!"
+}

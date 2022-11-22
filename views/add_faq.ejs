@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Add FAQ | Investigo</title>
+    <link rel="apple-touch-icon" href="/app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/app-assets/images/logo/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="/app-assets/css/themes/vertical-dark-menu-template/style.css">
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu preload-transitions 2-columns" data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <%- include('_layouts/sidenavbar') %>
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div id="breadcrumbs-wrapper" data-image="/app-assets/images/gallery/breadcrumb-bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Add FAQ</span></h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/cms/faqs">FAQs</a></li>
+                                <li class="breadcrumb-item active">Add FAQ</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <!-- errors -->
+                                                <%- messages('messages', locals) %>
+                                                <form method="POST" onsubmit="validate()" action="/admin/cms/faqs/add" id="form">
+                                                    <h4 class="card-title">English</h4>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Question" id="EnQue" name="EnQue" type="text">
+                                                        <label for="EnQue">Question</label>
+                                                        <small>
+                                                            <div id="EnQueErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Answer" id="EnAns" name="EnAns" type="text">
+                                                        <label for="EnAns">Answer</label>
+                                                        <small>
+                                                            <div id="EnAnsErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <h4 class="card-title">French</h4>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Question" id="FrQue" name="FrQue" type="text">
+                                                        <label for="FrQue">Question</label>
+                                                        <small>
+                                                            <div id="FrQueErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input placeholder="Answer" id="FrAns" name="FrAns" type="text">
+                                                        <label for="FrAns">Answer</label>
+                                                        <small>
+                                                            <div id="FrAnsErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <select id="cat" name="category">
+                                                            <option value="">Select category</option>
+                                                            <option value="Getting Started">Getting Started</option>
+                                                            <option value="Adding Funds">Adding Funds</option>
+                                                            <option value="Investing">Investing</option>
+                                                            <option value="Security">Security</option>
+                                                            <option value="Taxes">Taxes</option>
+                                                        </select>
+                                                        <label>Select category</label>
+                                                        <small>
+                                                            <div id="catErr" class="error"></div>
+                                                        </small>
+                                                    </div>
+                                                    <button type="submit" class="btn purple mt-1" id="submitBtn">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-overlay"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Page Main-->
+
+    <script>
+        const formC = document.getElementById('form');
+
+        formC.addEventListener('submit', (e) => {
+            e.preventDefault();
+        })
+
+        function validate() {
+            let returnVal = true;
+
+            const EnQueValue = document.getElementById('EnQue').value.trim();
+            const EnAnsValue = document.getElementById('EnAns').value.trim();
+            const FrQueValue = document.getElementById('FrQue').value.trim();
+            const FrAnsValue = document.getElementById('FrAns').value.trim();
+            const catValue = document.getElementById('cat').value;
+
+            if (EnQueValue == '') {
+                document.getElementById('EnQueErr').innerText = 'Please enter question.';
+                returnVal = false;
+            } else {
+                document.getElementById('EnQueErr').innerText = '';
+            }
+
+            if (EnAnsValue == '') {
+                document.getElementById('EnAnsErr').innerText = 'Please enter answer.';
+                returnVal = false;
+            } else {
+                document.getElementById('EnAnsErr').innerText = '';
+            }
+
+            if (FrQueValue == '') {
+                document.getElementById('FrQueErr').innerText = 'Please enter question.';
+                returnVal = false;
+            } else {
+                document.getElementById('FrQueErr').innerText = '';
+            }
+
+            if (FrAnsValue == '') {
+                document.getElementById('FrAnsErr').innerText = 'Please enter answer.';
+                returnVal = false;
+            } else {
+                document.getElementById('FrAnsErr').innerText = '';
+            }
+
+            if (catValue == '') {
+                document.getElementById('catErr').innerText = 'Please select category.';
+                returnVal = false;
+            } else {
+                document.getElementById('catErr').innerText = '';
+            }
+
+            if (returnVal) {
+                document.getElementById('submitBtn').disabled = true;
+                formC.submit();
+            }
+        }
+    </script>
+    <!-- BEGIN VENDOR JS-->
+    <script src="/app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="/app-assets/js/plugins.js"></script>
+    <script src="/app-assets/js/scripts/ui-alerts.js"></script>
+    <!-- END THEME  JS-->
+</body>
+<%- include('_layouts/alert') %>
+
+</html>
